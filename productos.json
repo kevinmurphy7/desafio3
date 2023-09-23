@@ -1,0 +1,123 @@
+[
+    {
+        "id":1,
+        "code":"00001",
+        "title":"Camiseta titular",
+        "description":"Camiseta titular oficial de Estudiantes de La Plata 2023 marca Ruge",
+        "price":27500,
+        "status": true,
+        "stock":8,
+        "category":"camisetas",
+        "thumbnails": ["https://http2.mlstatic.com/D_NQ_NP_866232-MLA53707740636_022023-O.webp"]
+    },
+    {
+        "id":2,
+        "code":"00002",
+        "title":"Camiseta suplente",
+        "description":"Camiseta suplente oficial de Estudiantes de La Plata 2023 marca Ruge",
+        "price":27500,
+        "status":true,
+        "stock":12,
+        "category":"camisetas",
+        "thumbnails":["https://http2.mlstatic.com/D_NQ_NP_857174-MLA53707915203_022023-O.webp"]
+    },
+    {
+        "id":3,
+        "code":"00003",
+        "title":"Camiseta alternativa",
+        "description":"Camiseta alternativa oficial de Estudiantes de La Plata 2023 marca Ruge" ,
+        "price":27500,
+        "status":true,
+        "stock":7,
+        "category":"camisetas",
+        "thumbnails":["https://http2.mlstatic.com/D_NQ_NP_978642-MLA54969020430_042023-O.webp"]
+    },
+    {
+        "id":4,
+        "code":"00004",
+        "title":"Camiseta entrenamiento",
+        "description":"Camiseta de entrenamiento oficial de Estudiantes de La Plata 2023 marca Ruge" ,
+        "price":27500,
+        "status": true,
+        "stock":10,
+        "category":"camisetas",
+        "thumbnails":["https://afaar.vtexassets.com/arquivos/ids/156139/Camiseta-Ruge-Estudiantes-De-La-Plata-2023-Hombre-Prematch-roja.jpg?v=638204549169930000"]
+    },
+    {
+        "id":5,
+        "code":"00005",
+        "title":"Jogging",
+        "description":"Jogging de entrenamiento rojo oficial de Estudiantes de La Plata 2023 marca Ruge" ,
+        "price":25600,
+        "status":true,
+        "stock":9,
+        "category":"pantalones",
+        "thumbnails":["https://http2.mlstatic.com/D_NQ_NP_2X_775237-MLA54816514299_042023-F.webp"]
+    },
+    {
+        "id":6,
+        "code":"00006",
+        "title":"Short titular",
+        "description":"Short negro oficial de Estudiantes de La Plata 2023 marca Ruge" ,
+        "price":15200,
+        "status":true,
+        "stock":14,
+        "category":"pantalones",
+        "thumbnails":["https://http2.mlstatic.com/D_NQ_NP_2X_646671-MLA70062916041_062023-F.webp"]
+        },
+    {
+        "id":7,
+        "code":"00007",
+        "title":"Short suplente",
+        "description":"Short blanco oficial de Estudiantes de La Plata 2023 marca Ruge",
+        "price":15200,
+        "status":true,
+        "stock":15,
+        "category":"pantalones",
+        "thumbnails":["https://d2r9epyceweg5n.cloudfront.net/stores/001/949/148/products/img-20221213-wa00191-dea3e27c9e99c73c8a16766723395297-640-0.jpg"]
+    },
+    {
+        "id":8,
+        "code":"00008",
+        "title":"Jogging tiempo libre",
+        "description":"Jogging gris oficial de Estudiantes de La Plata 2023 marca Ruge" ,
+        "price":24000,
+        "status":true,
+        "stock":11,
+        "category":"pantalones",
+        "thumbnails":["https://http2.mlstatic.com/D_NQ_NP_2X_904499-MLA69964374474_062023-F.webp"]
+        },
+    {
+        "id":9,
+        "code":"00009",
+        "title":"Rompevientos",
+        "description":"Rompevientos negro oficial de Estudiantes de La Plata 2023 marca Ruge" ,
+        "price":38500,
+        "status":true,
+        "stock":3,
+        "category":"camperas",
+        "thumbnails":["https://http2.mlstatic.com/D_NQ_NP_717067-MLA54744271440_032023-O.webp"]
+    },
+    {
+        "id":10,
+        "code":"00010",
+        "title":"Camperón",
+        "description":"Camperón negro oficial de Estudiantes de La Plata 2023 marca Ruge" ,
+        "price":58200,
+        "status":true,
+        "stock":4,
+        "category":"camperas",
+        "thumbnails": ["https://http2.mlstatic.com/D_NQ_NP_839854-MLA69456578558_052023-O.webp"]
+    },
+    {
+        "id":11,
+        "code":"00011",
+        "title":"Campera liviana",
+        "description":"Campera liviana roja oficial de Estudiantes de La Plata 2023 marca Ruge" ,
+        "price":29900,
+        "status":true,
+        "stock":6,
+        "category":"camperas",
+        "thumbnails":["https://http2.mlstatic.com/D_NQ_NP_2X_879201-MLA69803547160_062023-F.webp"]
+    }
+]
