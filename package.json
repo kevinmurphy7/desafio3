@@ -5,7 +5,8 @@
   "type": "module",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon ./src/app.js"
+    "start": "nodemon ./src/app.js",
+    "dev": "node ./src/ProductManager.js"
   },
   "author": "",
   "license": "ISC",
