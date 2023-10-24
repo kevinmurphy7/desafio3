@@ -1,10 +1,11 @@
 import fs from 'fs';
+
 class ProductManager {
     constructor(path) {
         this.path = path;
     }
 
-    async getProducts(queryObj = {}) {
+    async getProducts( queryObj = {} ) {
         try {
             const { limit } = queryObj;
             if (fs.existsSync(this.path)) {
@@ -93,7 +94,7 @@ class ProductManager {
         }
     }
 
-}
+};
 
 const productManager = new ProductManager("./src/ProductFile.json");
 
