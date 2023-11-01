@@ -7,6 +7,7 @@ import productsRouter from './routes/products.router.js';
 import cartsRouter from './routes/carts.router.js';
 import viewsRouter from './routes/views.router.js';
 import productsManager from './dao/managers/ProductsManager.js';
+import cartsManager from './dao/managers/CartsManager.js';
 
 import { messagesModel } from './dao/models/messages.model.js';
 
@@ -14,6 +15,8 @@ import "./dao/configDB.js"
 
 const app = express();
 const port = 8080;
+
+const cartId = "65400daabe36fd3a973c8aa3";
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -54,6 +57,14 @@ socketServer.on('connection', socket => {
             await productsManager.deleteProduct(id);
 
             socketServer.emit('productDeleted', id);
+        } catch (error) {
+            throw new Error(error.message);
+        }
+    })
+
+    socket.on('addProductToCart', async (newProductId) => {
+        try {
+            await cartsManager.addProductToCart(newProductId, cartId);
         } catch (error) {
             throw new Error(error.message);
         }
