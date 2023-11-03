@@ -16,7 +16,7 @@ import "./dao/configDB.js"
 const app = express();
 const port = 8080;
 
-const cartId = "65400daabe36fd3a973c8aa3";
+const cartId = "65381621963ac3c4cf239500"
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
