@@ -15,8 +15,10 @@ import sessionsRouter from "./routes/sessions.router.js";
 
 import { messagesModel } from './dao/models/messages.model.js';
 
-import "./dao/configDB.js"
+import "./dao/configDB.js";
+
 import passport from 'passport';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 const port = 8080;
@@ -26,6 +28,8 @@ const cartId = "65381621963ac3c4cf239500"
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
+
+app.use(cookieParser("SecretCookie"));
 
 const URI = "mongodb+srv://kevinmurphy:Chukaesta7@cluster0.zee7fdw.mongodb.net/ecommerce?retryWrites=true&w=majority"
 app.use(

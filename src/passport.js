@@ -3,7 +3,9 @@ import { hashData, compareData } from "./utils.js";
 import { usersManager } from "./dao/managers/UsersManager.js";
 import { Strategy as LocalStrategy } from "passport-local";
 import { Strategy as GithubStrategy } from "passport-github2";
+import { ExtractJwt, Strategy as JWTStrategy } from "passport-jwt";
 
+const SECRETJWT = "jwtSecret";
 
 passport.use('signup', new LocalStrategy(
     { passReqToCallback: true, usernameField: 'email' },
@@ -15,7 +17,9 @@ passport.use('signup', new LocalStrategy(
             }
             const hashedPassword = await hashData(password);
 
-            const createdUser = await usersManager.createUser({ ...req.body, password: hashedPassword});
+            const role = (email === "adminCoder@coder.com") ? 'admin' : 'user';
+
+            const createdUser = await usersManager.createUser({ ...req.body, password: hashedPassword,role});
             done(null, createdUser);
         } catch (error) {
             done(error);
@@ -70,6 +74,9 @@ passport.use('github', new GithubStrategy(
                 email: profile._json.email,
                 password: " ",
                 isGithub: true
+            };
+            if(infoUser.email === "adminCoder@coder.com") {
+                infoUser.role = 'admin';
             }
             const createdUser = await usersManager.createUser(infoUser);
             done(null, createdUser);
@@ -91,3 +98,12 @@ passport.deserializeUser(async (id, done) => {
         done(error);
     }
 });
+
+const fromCookies = (req) => req.cookies.token;
+
+passport.use('jwt', new JWTStrategy({
+    jwtFromRequest: ExtractJwt.fromExtractors([fromCookies]),
+    secretOrKey: SECRETJWT,
+}, (jwt_payload, done) => {
+    done(null, jwt_payload);
+}));
