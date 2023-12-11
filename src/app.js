@@ -4,7 +4,8 @@ import { __dirname } from './utils.js';
 import { Server } from "socket.io";
 import MongoStore from "connect-mongo";
 import session from "express-session";
-import "./passport.js"
+import "./config/passport.js";
+import envKeys from './config/configEnv.js';
 
 import productsRouter from './routes/products.router.js';
 import cartsRouter from './routes/carts.router.js';
@@ -35,7 +36,7 @@ const URI = "mongodb+srv://kevinmurphy:Chukaesta7@cluster0.zee7fdw.mongodb.net/e
 app.use(
     session({
         store: new MongoStore({
-            mongoUrl: URI,
+            mongoUrl: envKeys.mongo_uri,
         }),
         secret: "secretSession",
         cookie: { maxAge: 600000 },

@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
+import envKeys from "../config/configEnv.js";
 
-const URI = "mongodb+srv://kevinmurphy:Chukaesta7@cluster0.zee7fdw.mongodb.net/ecommerce?retryWrites=true&w=majority"
 mongoose
-    .connect(URI)
+    .connect(envKeys.mongo_uri)
     .then( () => console.log("Connected to DB") )
     .catch( error => console.log(error) )

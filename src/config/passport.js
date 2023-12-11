@@ -1,11 +1,11 @@
 import passport from "passport";
-import { hashData, compareData } from "./utils.js";
-import { usersManager } from "./dao/managers/UsersManager.js";
+import { hashData, compareData } from "../utils.js";
+import { usersManager } from "../dao/managers/UsersManager.js";
 import { Strategy as LocalStrategy } from "passport-local";
 import { Strategy as GithubStrategy } from "passport-github2";
 import { ExtractJwt, Strategy as JWTStrategy } from "passport-jwt";
+import envKeys from "./configEnv.js";
 
-const SECRETJWT = "jwtSecret";
 
 passport.use('signup', new LocalStrategy(
     { passReqToCallback: true, usernameField: 'email' },
@@ -19,7 +19,7 @@ passport.use('signup', new LocalStrategy(
 
             const role = (email === "adminCoder@coder.com") ? 'admin' : 'user';
 
-            const createdUser = await usersManager.createUser({ ...req.body, password: hashedPassword,role});
+            const createdUser = await usersManager.createOne({ ...req.body, password: hashedPassword,role});
             done(null, createdUser);
         } catch (error) {
             done(error);
@@ -34,7 +34,7 @@ passport.use('login', new LocalStrategy(
                 done(null, false);
             }
 
-            const user = await usersManager.getUserByEmail(email);
+            const user = await usersManager.findByEmail(email);
             if (!user) {
                 return done(null, false);
             }
@@ -52,13 +52,13 @@ passport.use('login', new LocalStrategy(
 
 passport.use('github', new GithubStrategy(
     {
-        clientID: "Iv1.f6f6908d6d4afeaa",
-        clientSecret: "a27e9968af4b3ac117715b6be58d439884d5d5ee",
+        clientID: envKeys.github_client_id,
+        clientSecret: envKeys.github_client_secret,
         callbackURL: "http://localhost:8080/api/sessions/callback",
     },
     async (accessToken, refreshToker, profile, done) => {
         try {
-            const userDB = await usersManager.getUserByEmail(profile._json.email);
+            const userDB = await usersManager.findByEmail(profile._json.email);
 
             if (userDB) {
                 if (userDB.isGithub) {
@@ -78,7 +78,7 @@ passport.use('github', new GithubStrategy(
             if(infoUser.email === "adminCoder@coder.com") {
                 infoUser.role = 'admin';
             }
-            const createdUser = await usersManager.createUser(infoUser);
+            const createdUser = await usersManager.createOne(infoUser);
             done(null, createdUser);
 
         } catch (error) {
@@ -92,7 +92,7 @@ passport.serializeUser((user, done) => {
 
 passport.deserializeUser(async (id, done) => {
     try {
-        const user = await usersManager.getUserById(id);
+        const user = await usersManager.findById(id);
         done(null, user);
     } catch (error) {
         done(error);
@@ -103,7 +103,7 @@ const fromCookies = (req) => req.cookies.token;
 
 passport.use('jwt', new JWTStrategy({
     jwtFromRequest: ExtractJwt.fromExtractors([fromCookies]),
-    secretOrKey: SECRETJWT,
+    secretOrKey: envKeys.jwt_secret,
 }, (jwt_payload, done) => {
     done(null, jwt_payload);
 }));
